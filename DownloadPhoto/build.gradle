@@ -1,2 +1,9 @@
 apply plugin: 'java'
 
+repositories {
+    mavenCentral()
+}
+dependencies {
+    implementation 'com.slickqa:testng:7.0.0-7'
+    implementation 'org.seleniumhq.selenium:selenium-java:4.0.0-alpha-3'
+}
