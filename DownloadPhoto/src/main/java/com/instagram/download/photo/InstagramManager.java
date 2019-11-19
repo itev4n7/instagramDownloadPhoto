@@ -27,7 +27,7 @@ public class InstagramManager {
 
     private void start() {
         driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
     }
 
     private void stop() {
@@ -73,5 +73,8 @@ public class InstagramManager {
 
     public void goToUserLink(String userLink) {
         driver.get("https://www.instagram.com/" + userLink);
+    }
+    public void clickByXpath(By by){
+
     }
 }

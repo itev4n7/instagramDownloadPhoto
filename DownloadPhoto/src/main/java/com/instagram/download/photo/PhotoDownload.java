@@ -17,25 +17,58 @@ public class PhotoDownload extends InstagramManager {
         //create class User link
         String userLink = "vkvisionary";
         goToUserLink(userLink);
-        //find first photo and click
+        clickFirstPhoto();//have bug
+
+        // button play on video = //span[@aria-label='Play']
+
+        // click following photo
+        // //div[4]/div[2]//div[1]//div[2]/button/div
+
+        //click button next post-photo
+        // //div[4]/div[1]//a[text()= 'Next']
+
+        // xpath = (//*[@role='button'])[4]//img only fist photo*
+        // //div[4]/div[2]//div[1]//div[2]//li[2]//img lists photo
+
+        By nextPostButton = By.xpath("//div[4]/div[1]//a[text()= 'Next']");
+        while (isElementPresent(nextPostButton)) {
+            if (!isElementPresent(By.xpath("//span[@aria-label='Play']"))) {
+                initPhoto();
+            }
+            driver.findElement(nextPostButton).click();
+        }
+    }
+
+    private void clickFirstPhoto() {
         driver.findElement(By.xpath(
                 "//*[@id='react-root']//div[2]/article[2]/div/div[1]/div[1]/div[1]"))
                 .click();
-        downloadPhoto();
-
-        //click button next photo
-        driver.findElement(
-                By.xpath("//div[4]/div[1]/div//a")).click();
-
-        // xpath = (//*[@role='button'])[4]//img only fist photo*
-        // need find by list            *5* next but only two photo
-        // <li have role='button'> to all photo
     }
 
-    private void downloadPhoto() {
+    private void clickNextPhoto() {
+        driver.findElement(By.xpath(
+                "//div[@class='    coreSpriteRightChevron']")).click();
+    }
+
+    private void initPhoto() {
+        By nextPhotoButton = By.xpath("//div[@class='    coreSpriteRightChevron']");
+        if (isElementPresent(nextPhotoButton)) {
+            int countListPage = 1;
+            while (isElementPresent(nextPhotoButton)) {
+                downloadPhoto(String.format(
+                        "//div[4]/div[2]//div[1]//div[2]//li[%d]//img",
+                        countListPage++));
+                clickNextPhoto();
+            }
+        } else {
+            downloadPhoto("(//*[@role='button'])[4]//img");
+        }
+    }
+
+    private void downloadPhoto(String locator) {
         try {
             WebElement elPhoto = driver.findElement(
-                    By.xpath("(//*[@role='button'])[4]//img"));
+                    By.xpath(locator));
             String srcPhoto = elPhoto.getAttribute("src");
             URL imageURL = new URL(srcPhoto);
             BufferedImage saveImage = ImageIO.read(imageURL);
