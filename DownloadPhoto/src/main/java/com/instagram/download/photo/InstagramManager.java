@@ -76,6 +76,10 @@ public class InstagramManager {
     }
 
     public void clickByXpath(By locator) {
+        driver.findElement(locator).click();
+    }
 
+    public void clickByXpath(String locator) {
+        driver.findElement(By.xpath(locator)).click();
     }
 }

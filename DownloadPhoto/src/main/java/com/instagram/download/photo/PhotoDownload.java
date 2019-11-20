@@ -16,36 +16,21 @@ public class PhotoDownload extends InstagramManager {
 
     @Test
     public void testPhotoDownload() throws Exception {
-        //create class User link
-        String userLink = "katsalamari";
+        String userLink = "lesha_4n7";
         goToUserLink(userLink);
-
         checkPanels();
-
         clickFirstPhoto();
+        uploadPhotos();
+    }
 
-        // button play on video = //span[@aria-label='Play']
-
-        // click following photo
-        // //div[4]/div[2]//div[1]//div[2]/button/div
-
-        //click button next post-photo
-        // //div[4]/div[1]//a[text()= 'Next']
-
-        // xpath = (//*[@role='button'])[4]//img only fist photo*
-        // //div[4]/div[2]//div[1]//div[2]//li[2]//img lists photo
-
-        //       (//*[@id='react-root']//div[3]//a/div)[1] if have 3 div on page
-        //  //child::main/child::div/child::div and get arr if size 2 use div[2] else div[3]
-
+    private void uploadPhotos() {
         By nextPostButton = By.xpath("//div[4]/div[1]//a[text()= 'Next']");
-
         while (true) {
             if (isVideo()) {
                 initPhoto();
             }
             if (isElementPresent(nextPostButton)) {
-                driver.findElement(nextPostButton).click();
+                clickByXpath(nextPostButton);
             } else {
                 break;
             }
@@ -70,14 +55,11 @@ public class PhotoDownload extends InstagramManager {
     }
 
     private void clickFirstPhoto() {
-        driver.findElement(By.xpath(
-                "(//*[@id='react-root']//div[" + clickByPhoto + "]//a/div)[1]")) //click
-                .click();
+        clickByXpath("(//*[@id='react-root']//div[" + clickByPhoto + "]//a/div)[1]");
     }
 
     private void clickNextPhoto() {
-        driver.findElement(By.xpath(
-                "//div[@class='    coreSpriteRightChevron']")).click(); //click
+        clickByXpath("//div[@class='    coreSpriteRightChevron']");
     }
 
     private void initPhoto() {

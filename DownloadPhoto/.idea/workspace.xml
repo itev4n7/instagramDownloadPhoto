@@ -19,17 +19,36 @@
       <ProjectState />
     </projectState>
   </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="DownloadPhoto" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/instagram/download/photo/PhotoDownload.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="273">
-              <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
+            <state relative-caret-position="306">
+              <caret line="18" column="38" selection-start-line="18" selection-start-column="38" selection-end-line="18" selection-end-column="38" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1573#1574#0" expanded="true" />
-                <element signature="e#1653#1654#0" expanded="true" />
+                <element signature="e#1540#1541#0" expanded="true" />
+                <element signature="e#1633#1634#0" expanded="true" />
+                <element signature="e#1735#1736#0" expanded="true" />
+                <element signature="e#1810#1811#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -38,11 +57,15 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/instagram/download/photo/InstagramManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1190">
-              <caret line="77" column="28" lean-forward="true" selection-start-line="77" selection-start-column="28" selection-end-line="77" selection-end-column="28" />
+            <state relative-caret-position="272">
+              <caret line="23" column="39" selection-start-line="23" selection-start-column="39" selection-end-line="23" selection-end-column="39" />
               <folding>
                 <element signature="e#1895#1896#0" expanded="true" />
                 <element signature="e#1962#1963#0" expanded="true" />
+                <element signature="e#2006#2007#0" expanded="true" />
+                <element signature="e#2048#2049#0" expanded="true" />
+                <element signature="e#2105#2106#0" expanded="true" />
+                <element signature="e#2166#2167#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -73,7 +96,43 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="ProjectPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="DownloadPhoto" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DownloadPhoto" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+            <path>
+              <item name="DownloadPhoto" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DownloadPhoto" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DownloadPhoto" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DownloadPhoto" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+            <path>
+              <item name="DownloadPhoto" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DownloadPhoto" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DownloadPhoto" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DownloadPhoto" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="photo" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
@@ -134,12 +193,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="PhotoDownload_testPhotoDownload - 2019.11.20 at 11h 29m 33s.xml">
-      <configuration name="PhotoDownload.testPhotoDownload" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="PhotoDownload_testPhotoDownload - 2019.11.20 at 14h 47m 49s.xml">
-      <configuration name="PhotoDownload.testPhotoDownload" configurationId="TestNG" />
-    </history-entry>
     <history-entry file="PhotoDownload_testPhotoDownload - 2019.11.20 at 15h 05m 10s.xml">
       <configuration name="PhotoDownload.testPhotoDownload" configurationId="TestNG" />
     </history-entry>
@@ -162,6 +215,12 @@
       <configuration name="PhotoDownload.testPhotoDownload" configurationId="TestNG" />
     </history-entry>
     <history-entry file="PhotoDownload_testPhotoDownload - 2019.11.20 at 20h 20m 22s.xml">
+      <configuration name="PhotoDownload.testPhotoDownload" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="PhotoDownload_testPhotoDownload - 2019.11.20 at 21h 06m 51s.xml">
+      <configuration name="PhotoDownload.testPhotoDownload" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="PhotoDownload_testPhotoDownload - 2019.11.20 at 21h 08m 39s.xml">
       <configuration name="PhotoDownload.testPhotoDownload" configurationId="TestNG" />
     </history-entry>
   </component>
@@ -242,34 +301,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/photo3.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/photo2.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/photo1.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/photo3.png" />
+    <entry file="file://$PROJECT_DIR$/photo2.png" />
+    <entry file="file://$PROJECT_DIR$/photo1.png" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/instagram/download/photo/InstagramManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1190">
-          <caret line="77" column="28" lean-forward="true" selection-start-line="77" selection-start-column="28" selection-end-line="77" selection-end-column="28" />
+        <state relative-caret-position="272">
+          <caret line="23" column="39" selection-start-line="23" selection-start-column="39" selection-end-line="23" selection-end-column="39" />
           <folding>
             <element signature="e#1895#1896#0" expanded="true" />
             <element signature="e#1962#1963#0" expanded="true" />
+            <element signature="e#2006#2007#0" expanded="true" />
+            <element signature="e#2048#2049#0" expanded="true" />
+            <element signature="e#2105#2106#0" expanded="true" />
+            <element signature="e#2166#2167#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/instagram/download/photo/PhotoDownload.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
+        <state relative-caret-position="306">
+          <caret line="18" column="38" selection-start-line="18" selection-start-column="38" selection-end-line="18" selection-end-column="38" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1573#1574#0" expanded="true" />
-            <element signature="e#1653#1654#0" expanded="true" />
+            <element signature="e#1540#1541#0" expanded="true" />
+            <element signature="e#1633#1634#0" expanded="true" />
+            <element signature="e#1735#1736#0" expanded="true" />
+            <element signature="e#1810#1811#0" expanded="true" />
           </folding>
         </state>
       </provider>
