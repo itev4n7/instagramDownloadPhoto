@@ -74,7 +74,8 @@ public class InstagramManager {
     public void goToUserLink(String userLink) {
         driver.get("https://www.instagram.com/" + userLink);
     }
-    public void clickByXpath(By by){
+
+    public void clickByXpath(By locator) {
 
     }
 }
