@@ -1,22 +1,29 @@
 package com.instagram.download.photo;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 import static org.testng.Assert.fail;
 
 public class InstagramManager {
 
+    private static int countPhoto = 1;
     protected WebDriver driver;
     private boolean acceptNextAlert = true;
     private StringBuffer verificationErrors = new StringBuffer();
 
     @BeforeClass(alwaysRun = true)
     public void setUp() throws Exception {
+        WebDriverManager.chromedriver().setup();
         start();
     }
 
@@ -81,5 +88,17 @@ public class InstagramManager {
 
     public void clickByXpath(String locator) {
         driver.findElement(By.xpath(locator)).click();
+    }
+
+    protected void downloadPhoto(WebElement photo) {
+        try {
+            String srcPhoto = photo.getAttribute("src");
+            URL imageURL = new URL(srcPhoto);
+            BufferedImage saveImage = ImageIO.read(imageURL);
+            ImageIO.write(saveImage, "png",
+                    new File(String.format("photo%d.png", countPhoto++)));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

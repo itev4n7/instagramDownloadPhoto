@@ -4,14 +4,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.net.URL;
 import java.util.List;
 
 public class PhotoDownload extends InstagramManager {
-    private static int countPhoto = 1;
     private static int clickByPhoto = 2;
 
     @Test
@@ -66,30 +61,20 @@ public class PhotoDownload extends InstagramManager {
         By nextPhotoButton = By.xpath("//div[@class='    coreSpriteRightChevron']");
         if (isElementPresent(nextPhotoButton)) {
             int countListPage = 1;
-            downloadPhoto(String.format(
-                    "//article//li[%d]//img[@srcset]",
-                    countListPage++));
+            downloadPhoto(driver.findElement(
+                    By.xpath(String.format(
+                            "//article//li[%d]//img[@srcset]",
+                            countListPage++))));
             while (isElementPresent(nextPhotoButton)) {
                 clickNextPhoto();
-                downloadPhoto(String.format(
-                        "//article//li[%d]//img[@srcset]",
-                        countListPage++));
+                downloadPhoto(driver.findElement(
+                        By.xpath(String.format(
+                                "//article//li[%d]//img[@srcset]",
+                                countListPage++))));
             }
         } else {
-            downloadPhoto("//*[@role='button']//img[@srcset]");
-        }
-    }
-
-    private void downloadPhoto(String locator) {
-        try {
-            WebElement elPhoto = driver.findElement(By.xpath(locator));
-            String srcPhoto = elPhoto.getAttribute("src");
-            URL imageURL = new URL(srcPhoto);
-            BufferedImage saveImage = ImageIO.read(imageURL);
-            ImageIO.write(saveImage, "png",
-                    new File(String.format("photo%d.png", countPhoto++)));
-        } catch (Exception e) {
-            e.printStackTrace();
+            downloadPhoto(driver.findElement(
+                    By.xpath("//*[@role='button']//img[@srcset]")));
         }
     }
 }
