@@ -90,7 +90,7 @@ public class InstagramManager {
         driver.findElement(By.xpath(locator)).click();
     }
 
-    protected void downloadPhoto(WebElement photo) {
+    public void downloadPhoto(WebElement photo) {
         try {
             String srcPhoto = photo.getAttribute("src");
             URL imageURL = new URL(srcPhoto);
@@ -100,5 +100,20 @@ public class InstagramManager {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public void loginToInst(String login, String password, String link) throws InterruptedException {
+        driver.get("https://www.instagram.com/accounts/login/?source=auth_switcher");
+        driver.findElement(By.name("username")).click();
+        driver.findElement(By.name("username")).sendKeys(login);
+        driver.findElement(By.name("password")).click();
+        driver.findElement(By.name("password")).sendKeys(password);
+        driver.findElement(By.xpath("//article//div[4]/button")).click();
+        Thread.sleep(2000);
+        driver.findElement(By.xpath("//div[3]/button[2]")).click();
+        driver.findElement(By.xpath("//section//div[2]/div/div/div[2]")).click();
+        driver.findElement(By.xpath("//nav//input")).sendKeys("@" + link);
+        driver.findElement(By.xpath("//nav//a[1]//div[2]/div/span")).click();
+        Thread.sleep(2000);
     }
 }
