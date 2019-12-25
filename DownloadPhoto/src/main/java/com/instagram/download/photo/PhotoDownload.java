@@ -11,7 +11,7 @@ public class PhotoDownload extends InstagramManager {
 
     @Test
     public void testPhotoDownload() throws Exception {
-        String userLink = "lesha_4n7";
+        String userLink = "katsalamari";
         goToUserLink(userLink);
         checkPanels();
         clickFirstPhoto();
