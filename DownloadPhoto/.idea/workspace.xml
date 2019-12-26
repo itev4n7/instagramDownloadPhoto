@@ -41,8 +41,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/instagram/download/photo/PhotoDownloadList.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="17" column="8" lean-forward="true" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="8" />
+            <state relative-caret-position="280">
+              <caret line="60" column="52" selection-start-line="60" selection-start-column="52" selection-end-line="60" selection-end-column="52" />
             </state>
           </provider>
         </entry>
@@ -50,8 +50,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/instagram/download/photo/InstagramManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="249">
-              <caret line="102" column="5" selection-start-line="102" selection-start-column="5" selection-end-line="102" selection-end-column="5" />
+            <state relative-caret-position="1496">
+              <caret line="92" column="10" selection-start-line="92" selection-start-column="10" selection-end-line="92" selection-end-column="10" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#2142#2143#0" expanded="true" />
@@ -92,8 +92,8 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="704" />
-    <option name="y" value="69" />
+    <option name="x" value="695" />
+    <option name="y" value="126" />
     <option name="width" value="1196" />
     <option name="height" value="948" />
   </component>
@@ -149,7 +149,7 @@
     <property name="Repository.Attach.Annotations" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1577292740700" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1577371641823" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
@@ -274,34 +274,34 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="PhotoDownloadList - 2019.12.25 at 12h 47m 56s.xml">
+    <history-entry file="PhotoDownloadList - 2019.12.25 at 19h 00m 18s.xml">
       <configuration name="PhotoDownloadList" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="PhotoDownloadList - 2019.12.25 at 12h 49m 10s.xml">
+    <history-entry file="PhotoDownloadList - 2019.12.25 at 23h 28m 06s.xml">
       <configuration name="PhotoDownloadList" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="PhotoDownloadList - 2019.12.25 at 12h 56m 30s.xml">
+    <history-entry file="PhotoDownloadList - 2019.12.26 at 16h 16m 29s.xml">
       <configuration name="PhotoDownloadList" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="PhotoDownloadList - 2019.12.25 at 12h 58m 32s.xml">
+    <history-entry file="PhotoDownloadList - 2019.12.26 at 16h 18m 32s.xml">
       <configuration name="PhotoDownloadList" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="PhotoDownloadList - 2019.12.25 at 13h 03m 50s.xml">
+    <history-entry file="PhotoDownloadList - 2019.12.26 at 16h 20m 40s.xml">
       <configuration name="PhotoDownloadList" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="PhotoDownloadList - 2019.12.25 at 13h 06m 14s.xml">
+    <history-entry file="PhotoDownloadList - 2019.12.26 at 16h 21m 57s.xml">
       <configuration name="PhotoDownloadList" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="PhotoDownloadList - 2019.12.25 at 13h 18m 33s.xml">
+    <history-entry file="PhotoDownloadList - 2019.12.26 at 16h 35m 06s.xml">
       <configuration name="PhotoDownloadList" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="PhotoDownloadList - 2019.12.25 at 13h 21m 45s.xml">
+    <history-entry file="PhotoDownloadList - 2019.12.26 at 16h 36m 06s.xml">
       <configuration name="PhotoDownloadList" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="PhotoDownloadList - 2019.12.25 at 13h 22m 55s.xml">
+    <history-entry file="PhotoDownloadList - 2019.12.26 at 16h 43m 51s.xml">
       <configuration name="PhotoDownloadList" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="PhotoDownloadList - 2019.12.25 at 13h 24m 20s.xml">
+    <history-entry file="PhotoDownloadList - 2019.12.26 at 16h 47m 27s.xml">
       <configuration name="PhotoDownloadList" configurationId="TestNG" />
     </history-entry>
   </component>
@@ -322,7 +322,7 @@
       <window_info anchor="bottom" id="Version Control" order="3" />
       <window_info anchor="bottom" id="Message" order="4" />
       <window_info anchor="bottom" id="Find" order="5" />
-      <window_info anchor="bottom" id="Run" order="6" weight="0.3817073" />
+      <window_info active="true" anchor="bottom" id="Run" order="6" visible="true" weight="0.3804878" />
       <window_info anchor="bottom" id="Debug" order="7" weight="0.39848676" />
       <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
@@ -399,13 +399,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="50" selection-start-line="8" selection-start-column="50" selection-end-line="8" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/photo6.png" />
     <entry file="file://$PROJECT_DIR$/photo3.png" />
     <entry file="file://$PROJECT_DIR$/photo4.png" />
@@ -418,8 +411,8 @@
     <entry file="file://$PROJECT_DIR$/photo35.png" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/instagram/download/photo/InstagramManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="249">
-          <caret line="102" column="5" selection-start-line="102" selection-start-column="5" selection-end-line="102" selection-end-column="5" />
+        <state relative-caret-position="1496">
+          <caret line="92" column="10" selection-start-line="92" selection-start-column="10" selection-end-line="92" selection-end-column="10" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#2142#2143#0" expanded="true" />
@@ -428,10 +421,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="64" selection-start-line="7" selection-start-column="64" selection-end-line="7" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/instagram/download/photo/PhotoDownloadList.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="17" column="8" lean-forward="true" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="8" />
+        <state relative-caret-position="280">
+          <caret line="60" column="52" selection-start-line="60" selection-start-column="52" selection-end-line="60" selection-end-column="52" />
         </state>
       </provider>
     </entry>
