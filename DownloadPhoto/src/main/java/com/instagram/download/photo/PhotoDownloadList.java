@@ -5,7 +5,9 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
-import java.util.*;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class PhotoDownloadList extends InstagramManager {
     private static int posts;
@@ -14,7 +16,7 @@ public class PhotoDownloadList extends InstagramManager {
     public void testPhotoDownload() throws Exception {
         String login = "";
         String password = "";
-        String link = "vkvisionary"; //yan_lapotkov
+        String link = "yan_lapotkov"; //vkvisionary
         loginToInst(login, password, link);
         initPosts();
         downloadSinglePhoto();
@@ -27,29 +29,24 @@ public class PhotoDownloadList extends InstagramManager {
 
 
     private void downloadSinglePhoto() {
-        Map<WebElement, Boolean> srcp = new LinkedHashMap(); //<photo, label)>
-        Set<WebElement> ssr = new LinkedHashSet<>(); //link on photo
-        Set<WebElement> lab = new LinkedHashSet<>(); //link on label
-        Iterator<WebElement> iterPhoto, iterLabel;
+        Map<WebElement, Boolean> savedPhoto = new LinkedHashMap(); // <photo, label)>
+        Iterator<WebElement> photoPage, labelPage;
         WebElement photo;
-        while (ssr.size() < posts) { //fin ver --> (ssr < posts)
-            ssr.addAll(driver.findElements(By.xpath("//article//img[@src]")));
-            lab.addAll(driver.findElements(By.xpath("//article//a[@href]")));
-            iterPhoto = ssr.iterator();
-            iterLabel = lab.iterator();
-            while (iterPhoto.hasNext()) {
-                photo = iterPhoto.next();
-                if (!srcp.containsKey(photo)) {
+        while (savedPhoto.size() < posts) {
+            photoPage = driver.findElements(By.xpath("//article//img[@src]")).iterator();
+            labelPage = driver.findElements(By.xpath("//article//a[@href]")).iterator();
+            while (photoPage.hasNext()) {
+                photo = photoPage.next();
+                if (!savedPhoto.containsKey(photo)) {
                     try {
-                        iterLabel.next().findElement(By.tagName("span"));
-                        srcp.put(photo, false);
+                        labelPage.next().findElement(By.tagName("span"));
+                        savedPhoto.put(photo, false);
                     } catch (Exception e) {
-                        srcp.put(photo, true);
+                        savedPhoto.put(photo, true);
                         downloadPhoto(photo);
                     }
                 }
             }
-            System.out.println(srcp.size());
             for (int i = 0; i < 6; i++) {
                 scrollPageDown();
             }
