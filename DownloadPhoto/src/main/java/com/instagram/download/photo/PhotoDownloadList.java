@@ -10,7 +10,8 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class PhotoDownloadList extends InstagramManager {
-    private static int posts;
+    private static Integer STEP = 250;
+    private int posts;
 
     @Test
     public void testPhotoDownload() throws Exception {
@@ -18,18 +19,12 @@ public class PhotoDownloadList extends InstagramManager {
         String password = "";
         String link = "yan_lapotkov"; //vkvisionary
         loginToInst(login, password, link);
-        initPosts();
+        posts = getPostItems();
         downloadSinglePhoto();
     }
 
-    private void initPosts() {
-        posts = Integer.parseInt(driver.findElement(
-                By.xpath("(//li[1]//span)[last()]")).getText());
-    }
-
-
     private void downloadSinglePhoto() {
-        Map<WebElement, Boolean> savedPhoto = new LinkedHashMap(); // <photo, label)>
+        Map<WebElement, Boolean> savedPhoto = new LinkedHashMap<>(); // <photo, label)>
         Iterator<WebElement> photoPage, labelPage;
         WebElement photo;
         while (savedPhoto.size() < posts) {
@@ -40,22 +35,19 @@ public class PhotoDownloadList extends InstagramManager {
                 if (!savedPhoto.containsKey(photo)) {
                     try {
                         labelPage.next().findElement(By.tagName("span"));
-                        savedPhoto.put(photo, false);
-                    } catch (Exception e) {
                         savedPhoto.put(photo, true);
-                        downloadPhoto(photo);
+                    } catch (Exception e) {
+                        savedPhoto.put(photo, false);
+                        downloadPhoto(transformURL(photo.getAttribute("src")));
                     }
                 }
             }
-            for (int i = 0; i < 6; i++) {
-                scrollPageDown();
-            }
+            scrollPageDown();
         }
     }
 
     private void scrollPageDown() {
         JavascriptExecutor jse = (JavascriptExecutor) driver;
-        jse.executeScript("window.scrollBy(0,250)", "");
+        jse.executeScript(String.format("window.scrollBy(0,%d)", STEP += 550), "");
     }
-
 }
