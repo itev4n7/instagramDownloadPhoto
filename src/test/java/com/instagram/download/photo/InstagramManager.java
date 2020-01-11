@@ -18,6 +18,7 @@ public class InstagramManager {
     private static int count = 1;
     static WebDriver driver;
     private boolean acceptNextAlert = true;
+    private static boolean authorization = false;
 
     @BeforeClass(alwaysRun = true)
     public void setUp() {
@@ -97,23 +98,27 @@ public class InstagramManager {
     }
 
     static int getPostItems() {
-        return Integer.parseInt(driver.findElement(
-                By.xpath("//li[contains(*, 'posts')]/span/span")).getText());
+        if (authorization) {
+            return Integer.parseInt(driver.findElement(
+                    By.xpath("//li[contains(*, 'posts')]/span/span")).getText());
+        } else {
+            return Integer.parseInt(driver.findElement(
+                    By.xpath("//li[contains(*, 'posts')]")).getText());
+        }
     }
 
-    void loginToInst(String login, String password, String link) throws InterruptedException {
+    void loginToInst(String login, String password, String link) {
         driver.get("https://www.instagram.com/accounts/login/?source=auth_switcher");
         driver.findElement(By.name("username")).click();
         driver.findElement(By.name("username")).sendKeys(login);
         driver.findElement(By.name("password")).click();
         driver.findElement(By.name("password")).sendKeys(password);
         driver.findElement(By.xpath("//article//div[4]/button")).click();
-        Thread.sleep(2000);
         driver.findElement(By.xpath("//div[3]/button[2]")).click();
         driver.findElement(By.xpath("//section//div[2]/div/div/div[2]")).click();
         driver.findElement(By.xpath("//nav//input")).sendKeys("@" + link);
         driver.findElement(By.xpath("//nav//a[1]//div[2]/div/span")).click();
-        Thread.sleep(2000);
+        authorization = true;
     }
 
     InputStream transformURL(String src) {
