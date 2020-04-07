@@ -1,5 +1,6 @@
 package com.instagram.download.photo;
 
+import com.codeborne.selenide.Configuration;
 import org.apache.commons.io.IOUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -25,7 +26,6 @@ public class PhotoDownloadSelenide {
         String login = "";
         String password = "";
         String link = "vkvisionary"; //yan_lapotkov
-
         tryTologin(login, password);
         tryToSearchUser(link);
         downloadUserPhotos(getPostsItems());
@@ -38,6 +38,7 @@ public class PhotoDownloadSelenide {
     }
 
     private void tryTologin(String login, String password) {
+        Configuration.startMaximized = true;
         open("https://www.instagram.com/accounts/login/?source=auth_switcher");
         $(By.name("username")).setValue(login);
         $(By.name("password")).setValue(password).pressEnter();
