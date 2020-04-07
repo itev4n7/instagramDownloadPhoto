@@ -16,7 +16,7 @@ public class PhotoDownloadWithoutCheck extends InstagramManager {
     public void testPhotoDownload() throws Exception {
         String login = "";
         String password = "";
-        String link = "yan_lapotkov"; //vkvisionary
+        String link = "vkvisionary"; //yan_lapotkov
         loginToInst(login, password, link);
         posts = getPostItems();
         downloadPhotos();
