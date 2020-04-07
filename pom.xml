@@ -38,11 +38,15 @@
         <dependency>
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
-            <version>3.7.1</version>
+            <version>3.8.1</version>
             <scope>test</scope>
         </dependency>
 
-
+        <dependency>
+            <groupId>com.codeborne</groupId>
+            <artifactId>selenide</artifactId>
+            <version>5.10.0</version>
+        </dependency>
 
     </dependencies>
     
