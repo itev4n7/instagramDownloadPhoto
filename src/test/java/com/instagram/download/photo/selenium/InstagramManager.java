@@ -1,4 +1,4 @@
-package com.instagram.download.photo;
+package com.instagram.download.photo.selenium;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.commons.io.IOUtils;

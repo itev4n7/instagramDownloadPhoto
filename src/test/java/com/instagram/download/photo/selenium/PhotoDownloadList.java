@@ -1,4 +1,4 @@
-package com.instagram.download.photo;
+package com.instagram.download.photo.selenium;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;

@@ -1,4 +1,4 @@
-package com.instagram.download.photo;
+package com.instagram.download.photo.selenide;
 
 import com.codeborne.selenide.Configuration;
 import org.apache.commons.io.IOUtils;
