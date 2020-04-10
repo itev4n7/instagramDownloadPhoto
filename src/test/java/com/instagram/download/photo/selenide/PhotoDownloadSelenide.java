@@ -1,9 +1,11 @@
 package com.instagram.download.photo.selenide;
 
 import com.codeborne.selenide.Configuration;
+import com.epam.reportportal.testng.ReportPortalTestNGListener;
 import org.apache.commons.io.IOUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import java.io.FileOutputStream;
@@ -17,6 +19,7 @@ import java.util.Map;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
+@Listeners({ReportPortalTestNGListener.class})
 public class PhotoDownloadSelenide {
     private static Integer STEP = 250;
     private static int count = 1;
