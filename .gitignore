@@ -1,3 +1,4 @@
 *.png
 .idea/
-build/reports/
+build/
+target/
