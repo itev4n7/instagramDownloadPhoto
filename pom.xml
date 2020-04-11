@@ -7,6 +7,7 @@
     <groupId>instagram.photo.download</groupId>
     <artifactId>instagramDownloadPhoto</artifactId>
     <version>1.0-SNAPSHOT</version>
+
     <build>
         <plugins>
             <plugin>
@@ -65,19 +66,25 @@
             <version>4.2.1</version>
         </dependency>
 
-        <!-- TODO Leave only one dependency, depends on what logger you use: -->
-        <dependency>
-            <groupId>com.epam.reportportal</groupId>
-            <artifactId>logger-java-logback</artifactId>
-            <version>3.0.0</version>
-        </dependency>
-
         <dependency>
             <groupId>com.epam.reportportal</groupId>
             <artifactId>logger-java-log4j</artifactId>
-            <version>3.0.0</version>
+            <version>4.0.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.17</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>3.15.0</version>
+            <scope>test</scope>
         </dependency>
 
     </dependencies>
-    
+
 </project>
