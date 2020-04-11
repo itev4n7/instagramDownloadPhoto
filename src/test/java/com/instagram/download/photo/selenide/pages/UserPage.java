@@ -1,12 +1,10 @@
-package com.instagram.download.photo.selenide;
+package com.instagram.download.photo.selenide.pages;
 
-import com.codeborne.selenide.Configuration;
-import com.epam.reportportal.testng.ReportPortalTestNGListener;
+import com.codeborne.selenide.SelenideElement;
 import org.apache.commons.io.IOUtils;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.testng.annotations.Listeners;
-import org.testng.annotations.Test;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -16,50 +14,41 @@ import java.net.URL;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
-@Listeners({ReportPortalTestNGListener.class})
-public class PhotoDownloadSelenide {
-    private static Integer STEP = 250;
+public class UserPage {
+    private static Logger logger = Logger.getLogger(UserPage.class);
     private static int count = 1;
+    private int step = 250;
+    private int postsItems = setPostsItems();
+    private int savedPostsCount = 0;
 
-    @Test
-    public void testPhotoDownload() {
-        String login = "";
-        String password = "";
-        String link = "vkvisionary"; //yan_lapotkov
-        tryTologin(login, password);
-        tryToSearchUser(link);
-        downloadUserPhotos(getPostsItems());
+    private SelenideElement postElement = $(By.xpath("//li[contains(*, 'postsItems')]/span/span"));
+
+    private int setPostsItems() {
+        logger.debug("try set posts items");
+        return Integer.parseInt(postElement.getText());
     }
 
-    private void tryToSearchUser(String link) {
-        $(byText("Not Now")).click();
-        $(By.xpath("//*[@placeholder='Search']")).setValue(link);
-        $(byText(link)).click();
+    public int getPostsItems() {
+        return postsItems;
     }
 
-    private void tryTologin(String login, String password) {
-        Configuration.startMaximized = true;
-        open("https://www.instagram.com/accounts/login/?source=auth_switcher");
-        $(By.name("username")).setValue(login);
-        $(By.name("password")).setValue(password).pressEnter();
+    public int getSavedPostsCount() {
+        return savedPostsCount;
     }
 
-    private int getPostsItems() {
-        return Integer.parseInt($(By.xpath("//li[contains(*, 'posts')]/span/span")).getText());
-    }
-
-    private void downloadUserPhotos(int posts) {
+    public void downloadUserPhotos() {
+        logger.info("try to download user photos");
         Map<WebElement, String> savedPhotos = new LinkedHashMap<>();
-        while (savedPhotos.size() < posts) {
+        while (savedPhotos.size() < postsItems) {
             $$(By.xpath("//img[@class='FFVAD']")).forEach(webElement -> {
                 if (!savedPhotos.containsKey(webElement))
                     savedPhotos.put(webElement, webElement.getAttribute("src"));
             });
-            executeJavaScript(String.format("window.scrollBy(0,%d)", STEP += 550));
+            executeJavaScript(String.format("window.scrollBy(0,%d)", step += 550));
         }
+        logger.debug("try to save photos");
         downloadSaved(savedPhotos);
     }
 
@@ -70,7 +59,7 @@ public class PhotoDownloadSelenide {
                 .forEach(this::downloadPhoto);
     }
 
-    InputStream transformURL(String src) {
+    private InputStream transformURL(String src) {
         try {
             return new URL(src).openStream();
         } catch (IOException e) {
@@ -78,12 +67,13 @@ public class PhotoDownloadSelenide {
         }
     }
 
-    void downloadPhoto(InputStream inputStream) {
+    private void downloadPhoto(InputStream inputStream) {
         if (inputStream != null) {
             try (OutputStream fileOutputStream = new FileOutputStream(ClassLoader.getSystemResource(".").getPath()
                     + String.format("/photo%d.png", count++))) {
                 IOUtils.copy(inputStream, fileOutputStream);
                 inputStream.close();
+                savedPostsCount++;
             } catch (IOException e) {
                 throw new RuntimeException("File didn't write " + e.getMessage());
             }
