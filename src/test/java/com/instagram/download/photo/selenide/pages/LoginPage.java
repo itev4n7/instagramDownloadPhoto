@@ -10,12 +10,13 @@ import static com.codeborne.selenide.Selenide.open;
 public class LoginPage {
     private static Logger logger = Logger.getLogger(LoginPage.class);
 
-    public void tryTologin(String login, String password) {
-        logger.info("try to login");
+    public void tryTologin(String username, String password) {
         Configuration.startMaximized = true;
         open("https://www.instagram.com/accounts/login/?source=auth_switcher");
-        $(By.name("username")).setValue(login);
+        logger.info("try to login");
+        logger.debug("set username");
+        $(By.name("username")).setValue(username);
+        logger.debug("set password");
         $(By.name("password")).setValue(password).pressEnter();
-        logger.debug("successful login");
     }
 }

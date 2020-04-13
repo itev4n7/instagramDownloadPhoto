@@ -11,9 +11,11 @@ public class NewsPage {
 
     public void tryToSearchUser(String link) {
         logger.info("try to search user");
+        logger.debug("click Not Now");
         $(byText("Not Now")).click();
+        logger.debug("enter user in search field");
         $(By.xpath("//*[@placeholder='Search']")).setValue(link);
+        logger.debug("click on user");
         $(byText(link)).click();
-        logger.debug("user found");
     }
 }
