@@ -19,9 +19,9 @@ public class DownloadUserPhoto {
     }
 
     @Test(dataProvider = "main")
-    public void testDownloadUserPhoto(String login, String password, String link) {
+    public void testDownloadUserPhoto(String username, String password, String link) {
         LoginPage loginPage = new LoginPage();
-        loginPage.tryTologin(login, password);
+        loginPage.tryToLogin(username, password);
 
         NewsPage newsPage = new NewsPage();
         newsPage.tryToSearchUser(link);

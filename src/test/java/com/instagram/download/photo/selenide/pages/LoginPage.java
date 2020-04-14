@@ -10,7 +10,7 @@ import static com.codeborne.selenide.Selenide.open;
 public class LoginPage {
     private static Logger logger = Logger.getLogger(LoginPage.class);
 
-    public void tryTologin(String username, String password) {
+    public void tryToLogin(String username, String password) {
         Configuration.startMaximized = true;
         open("https://www.instagram.com/accounts/login/?source=auth_switcher");
         logger.info("try to login");
