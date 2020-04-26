@@ -8,7 +8,7 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
 public class LoginPage {
-    private static Logger logger = Logger.getLogger(LoginPage.class);
+    private static final Logger logger = Logger.getLogger(LoginPage.class);
 
     public void tryToLogin(String username, String password) {
         Configuration.startMaximized = true;

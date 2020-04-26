@@ -7,7 +7,7 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 
 public class NewsPage {
-    private static Logger logger = Logger.getLogger(NewsPage.class);
+    private static final Logger logger = Logger.getLogger(NewsPage.class);
 
     public void tryToSearchUser(String link) {
         logger.info("try to search user");
