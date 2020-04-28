@@ -7,15 +7,15 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 
 public class NewsPage {
-    private static final Logger logger = Logger.getLogger(NewsPage.class);
+    private static final Logger LOGGER = Logger.getLogger(NewsPage.class);
 
     public void tryToSearchUser(String link) {
-        logger.info("try to search user");
-        logger.debug("click Not Now");
+        LOGGER.info("try to search user");
+        LOGGER.debug("click Not Now");
         $(byText("Not Now")).click();
-        logger.debug("enter user in search field");
+        LOGGER.debug("enter user in search field");
         $(By.xpath("//*[@placeholder='Search']")).setValue(link);
-        logger.debug("click on user");
+        LOGGER.debug("click on user");
         $(byText(link)).click();
     }
 }

@@ -8,15 +8,15 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
 public class LoginPage {
-    private static final Logger logger = Logger.getLogger(LoginPage.class);
+    private static final Logger LOGGER = Logger.getLogger(LoginPage.class);
 
     public void tryToLogin(String username, String password) {
         Configuration.startMaximized = true;
         open("https://www.instagram.com/accounts/login/?source=auth_switcher");
-        logger.info("try to login");
-        logger.debug("set username");
+        LOGGER.info("try to login");
+        LOGGER.debug("set username");
         $(By.name("username")).setValue(username);
-        logger.debug("set password");
+        LOGGER.debug("set password");
         $(By.name("password")).setValue(password).pressEnter();
     }
 }

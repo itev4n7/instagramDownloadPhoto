@@ -8,9 +8,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
-public class NewsPageSe {
-    private static Logger logger = Logger.getLogger(NewsPageSe.class);
-    private WebDriver driver;
+public class NewsPageSelenium extends BasePageSelenium {
+    private static final Logger LOGGER = Logger.getLogger(NewsPageSelenium.class);
 
     @FindBy(how = How.XPATH, using = "//*[@placeholder='Search']")
     private WebElement searchField;
@@ -18,18 +17,18 @@ public class NewsPageSe {
     @FindBy(how = How.XPATH, using = "//*[contains(text(),'Not Now')]")
     private WebElement notNowButton;
 
-
-    public NewsPageSe(WebDriver driver) {
-        this.driver = driver;
+    public NewsPageSelenium(WebDriver driver) {
+        super(driver);
+        PageFactory.initElements(driver, this);
     }
 
     public void tryToSearchUser(String link) {
-        logger.info("try to search user");
-        logger.debug("click Not Now");
+        LOGGER.info("try to search user");
+        LOGGER.debug("click Not Now");
         notNowButton.click();
-        logger.debug("enter user in search field");
+        LOGGER.debug("enter user in search field");
         searchField.sendKeys(link);
-        logger.debug("click on user");
+        LOGGER.debug("click on user");
         driver.findElement(By.xpath("//*[contains(text(),'" + link + "')]")).click();
     }
 }

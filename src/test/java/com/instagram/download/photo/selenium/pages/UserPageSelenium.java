@@ -8,6 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
+import org.openqa.selenium.support.PageFactory;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -17,10 +18,9 @@ import java.net.URL;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class UserPageSe {
-    private static Logger logger = Logger.getLogger(UserPageSe.class);
+public class UserPageSelenium extends BasePageSelenium {
+    private static final Logger LOGGER = Logger.getLogger(UserPageSelenium.class);
     private static int count = 1;
-    private WebDriver driver;
     private int step = 250;
     private int postsItems;
     private int savedPostsCount = 0;
@@ -28,12 +28,13 @@ public class UserPageSe {
     @FindBy(how = How.XPATH, using = "//li[contains(*, 'posts')]/span/span")
     private WebElement postsElement;
 
-    public UserPageSe(WebDriver driver) {
-        this.driver = driver;
+    public UserPageSelenium(WebDriver driver) {
+        super(driver);
+        PageFactory.initElements(driver, this);
     }
 
     private int setPostsItems() {
-        logger.debug("try set posts items");
+        LOGGER.debug("try set posts items");
         return Integer.parseInt(postsElement.getText());
     }
 
@@ -47,9 +48,9 @@ public class UserPageSe {
 
     public void downloadUserPhotos() {
         postsItems = setPostsItems();
-        logger.info("try to download user photos");
+        LOGGER.info("try to download user photos");
         Map<WebElement, String> savedPhotos = new LinkedHashMap<>();
-        logger.debug("put photos");
+        LOGGER.debug("put photos");
         while (savedPhotos.size() < postsItems) {
             driver.findElements(By.xpath("//img[@class='FFVAD']")).forEach(webElement -> {
                 if (!savedPhotos.containsKey(webElement))
@@ -57,22 +58,22 @@ public class UserPageSe {
             });
             scrollPageDown();
         }
-        logger.debug("try to save user photos");
+        LOGGER.debug("try to save user photos");
         downloadSaved(savedPhotos);
     }
 
     private void downloadSaved(Map<WebElement, String> savedPhotos) {
         savedPhotos.values()
-                .stream()
-                .map(this::transformURL)
-                .forEach(this::downloadPhoto);
+                  .stream()
+                  .map(this::transformURL)
+                  .forEach(this::downloadPhoto);
     }
 
     private InputStream transformURL(String src) {
         try {
             return new URL(src).openStream();
         } catch (IOException e) {
-            logger.error("Stream didn't create");
+            LOGGER.error("Stream didn't create");
             throw new RuntimeException("Stream didn't create " + e.getMessage());
         }
     }
@@ -80,12 +81,12 @@ public class UserPageSe {
     private void downloadPhoto(InputStream inputStream) {
         if (inputStream != null) {
             try (OutputStream fileOutputStream = new FileOutputStream(ClassLoader.getSystemResource(".").getPath()
-                    + String.format("/photo%d.png", count++))) {
+                      + String.format("/photo%d.png", count++))) {
                 IOUtils.copy(inputStream, fileOutputStream);
                 inputStream.close();
                 savedPostsCount++;
             } catch (IOException e) {
-                logger.error("File didn't write");
+                LOGGER.error("File didn't write");
                 throw new RuntimeException("File didn't write " + e.getMessage());
             }
         }
