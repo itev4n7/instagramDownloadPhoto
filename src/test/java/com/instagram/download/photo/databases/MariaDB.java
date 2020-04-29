@@ -12,22 +12,16 @@ import java.sql.*;
 
 public class MariaDB {
     private static final Logger LOGGER = Logger.getLogger(MariaDB.class);
-    private final DatabaseConnection connection;
-
-    public MariaDB(String url, String user, String password) {
-        connection = new DatabaseConnection(url, user, password);
-    }
 
     public void writeBlob(int id, InputStream inputStream) {
         LOGGER.info("Try write blob to database");
         String insertSQL = "insert into savedPhotos VALUES(?,?);";
-        try (Connection conn = connection.getConnection();
+        try (Connection conn = DatabaseConnection.getInstance();
              PreparedStatement pstmt = conn.prepareStatement(insertSQL)) {
             pstmt.setInt(1, id);
             pstmt.setBinaryStream(2, inputStream);
-            LOGGER.debug("Try to write blob");
             if (pstmt.executeUpdate() == 0) {
-                throw new SQLException("Blob didn't write");
+                LOGGER.debug("Blob didn't write");
             }
         } catch (SQLException e) {
             LOGGER.error(e.getMessage());
@@ -44,7 +38,7 @@ public class MariaDB {
     public void saveBlob(int id) {
         LOGGER.info("Save blob");
         String selectSQL = "select photo from savedPhotos where id=?;";
-        try (Connection conn = connection.getConnection();
+        try (Connection conn = DatabaseConnection.getInstance();
              PreparedStatement pstmt = conn.prepareStatement(selectSQL);
              ResultSet rs = pstmt.executeQuery()) {
             pstmt.setInt(1, id);
@@ -74,7 +68,7 @@ public class MariaDB {
     public int getRows() {
         LOGGER.info("Get rows from database");
         int rows = 0;
-        try (Connection conn = connection.getConnection();
+        try (Connection conn = DatabaseConnection.getInstance();
              Statement stmt = conn.createStatement()) {
             ResultSet resultSet = stmt.executeQuery("select count(*) from savedPhotos;");
             resultSet.next();
@@ -88,7 +82,7 @@ public class MariaDB {
 
     public void initTable() {
         LOGGER.info("Create new table");
-        try (Connection conn = connection.getConnection();
+        try (Connection conn = DatabaseConnection.getInstance();
              Statement stmt = conn.createStatement()) {
             stmt.execute("create table savedPhotos(id INT NOT NULL, photo LONGBLOB NOT NULL, PRIMARY KEY ( id ));");
         } catch (SQLException e) {
@@ -99,7 +93,7 @@ public class MariaDB {
 
     public void dropTable() {
         LOGGER.info("Drop table");
-        try (Connection conn = connection.getConnection();
+        try (Connection conn = DatabaseConnection.getInstance();
              Statement stmt = conn.createStatement()) {
             stmt.execute("drop table savedPhotos;");
         } catch (SQLException e) {
