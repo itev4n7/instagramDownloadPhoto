@@ -5,16 +5,14 @@ import org.testng.ITestContext;
 import org.testng.ITestListener;
 
 public class DatabaseListener implements ITestListener {
-   // MariaDB db;
 
     @Override
     public void onStart(ITestContext arg0) {
-       // db = new MariaDB();
-      //  db.initTable();
+        MariaDB.initTable();
     }
 
     @Override
     public void onFinish(ITestContext arg0) {
-        //db.dropTable();
+        MariaDB.dropTable();
     }
 }
