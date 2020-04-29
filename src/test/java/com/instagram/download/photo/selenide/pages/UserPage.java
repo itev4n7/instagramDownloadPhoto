@@ -18,11 +18,6 @@ public class UserPage {
     private static int count = 1;
     private int step = 250;
     private final int postItems = setPostsItems();
-    private final MariaDB db;
-
-    public UserPage(MariaDB db) {
-        this.db = db;
-    }
 
     private int setPostsItems() {
         LOGGER.debug("try set posts items");
@@ -66,7 +61,7 @@ public class UserPage {
 
     private void writePhotoToDB(InputStream inputStream) {
         if (inputStream != null) {
-            db.writeBlob(count++, inputStream);
+            MariaDB.writeBlob(count++, inputStream);
         }
     }
 }

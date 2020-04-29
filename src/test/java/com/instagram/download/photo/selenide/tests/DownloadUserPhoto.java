@@ -1,6 +1,8 @@
 package com.instagram.download.photo.selenide.tests;
 
 import com.epam.reportportal.testng.ReportPortalTestNGListener;
+import com.instagram.download.photo.databases.MariaDB;
+import com.instagram.download.photo.listeners.DatabaseListener;
 import com.instagram.download.photo.parameters.UserParameters;
 import com.instagram.download.photo.selenide.pages.LoginPage;
 import com.instagram.download.photo.selenide.pages.NewsPage;
@@ -11,8 +13,8 @@ import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
 
-@Listeners({ReportPortalTestNGListener.class})
-public class DownloadUserPhoto extends BaseTest {
+@Listeners({ReportPortalTestNGListener.class, DatabaseListener.class})
+public class DownloadUserPhoto {
 
     @DataProvider(name = "main")
     public static Object[][] main() {
@@ -27,9 +29,9 @@ public class DownloadUserPhoto extends BaseTest {
         NewsPage newsPage = new NewsPage();
         newsPage.tryToSearchUser(user.getLink());
 
-        UserPage userPage = new UserPage(db);
+        UserPage userPage = new UserPage();
         userPage.downloadUserPhotos();
 
-        assertEquals(userPage.getPostItems(), db.getRows());
+        assertEquals(userPage.getPostItems(), MariaDB.getRows());
     }
 }

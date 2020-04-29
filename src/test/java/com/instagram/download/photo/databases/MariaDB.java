@@ -13,7 +13,10 @@ import java.sql.*;
 public class MariaDB {
     private static final Logger LOGGER = Logger.getLogger(MariaDB.class);
 
-    public void writeBlob(int id, InputStream inputStream) {
+    private MariaDB() {
+    }
+
+    public static void writeBlob(int id, InputStream inputStream) {
         LOGGER.info("Try write blob to database");
         String insertSQL = "insert into savedPhotos VALUES(?,?);";
         try (Connection conn = DatabaseConnection.getInstance();
@@ -29,13 +32,13 @@ public class MariaDB {
         }
     }
 
-    public void saveAllBlobs() {
+    public static void saveAllBlobs() {
         for (int id = 1; id <= getRows(); id++) {
             saveBlob(id);
         }
     }
 
-    public void saveBlob(int id) {
+    public static void saveBlob(int id) {
         LOGGER.info("Save blob");
         String selectSQL = "select photo from savedPhotos where id=?;";
         try (Connection conn = DatabaseConnection.getInstance();
@@ -52,7 +55,7 @@ public class MariaDB {
         }
     }
 
-    private void downloadPhoto(InputStream inputStream, int id) {
+    private static void downloadPhoto(InputStream inputStream, int id) {
         if (inputStream != null) {
             try (OutputStream fileOutputStream = new FileOutputStream(ClassLoader.getSystemResource(".").getPath()
                       + String.format("/photo%d.png", id))) {
@@ -65,7 +68,7 @@ public class MariaDB {
         }
     }
 
-    public int getRows() {
+    public static int getRows() {
         LOGGER.info("Get rows from database");
         int rows = 0;
         try (Connection conn = DatabaseConnection.getInstance();
@@ -80,7 +83,7 @@ public class MariaDB {
         return rows;
     }
 
-    public void initTable() {
+    public static void initTable() {
         LOGGER.info("Create new table");
         try (Connection conn = DatabaseConnection.getInstance();
              Statement stmt = conn.createStatement()) {
@@ -91,7 +94,7 @@ public class MariaDB {
         }
     }
 
-    public void dropTable() {
+    public static void dropTable() {
         LOGGER.info("Drop table");
         try (Connection conn = DatabaseConnection.getInstance();
              Statement stmt = conn.createStatement()) {
