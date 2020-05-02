@@ -15,7 +15,7 @@ public class DatabaseConnection {
     private DatabaseConnection() {
     }
 
-    public static synchronized Connection getInstance() throws SQLException {
+    public static Connection getInstance() throws SQLException {
         if (instance == null || instance.isClosed()) {
             try {
                 LOGGER.info("Create connection");
@@ -23,9 +23,26 @@ public class DatabaseConnection {
                 instance = DriverManager.getConnection(config.url(), config.username(), config.password());
             } catch (SQLException e) {
                 LOGGER.error("Connection didn`t create");
-                throw new RuntimeException("Connection didn`t create " + e.getMessage());
             }
         }
         return instance;
+    }
+
+    public static void openConnection() {
+        try {
+            DatabaseConnection.getInstance();
+        } catch (SQLException ignored) {
+        }
+    }
+
+    public static void closeConnection() {
+        if (instance == null) {
+            try {
+                LOGGER.debug("Connection close");
+                instance.close();
+            } catch (SQLException e) {
+                LOGGER.error("Connection didn`t close");
+            }
+        }
     }
 }
