@@ -3,7 +3,6 @@ package com.instagram.download.photo.selenide.tests;
 import com.epam.reportportal.testng.ReportPortalTestNGListener;
 import com.instagram.download.photo.databases.MariaDB;
 import com.instagram.download.photo.listeners.DatabaseListener;
-import com.instagram.download.photo.listeners.RetryListener;
 import com.instagram.download.photo.parameters.UserParameters;
 import com.instagram.download.photo.selenide.pages.LoginPage;
 import com.instagram.download.photo.selenide.pages.NewsPage;
@@ -22,7 +21,7 @@ public class DownloadUserPhoto {
         return new Object[][]{{new UserParameters("", "", "vkvisionary")}}; //yan_lapotkov
     }
 
-    @Test(dataProvider = "main", retryAnalyzer = RetryListener.class)
+    @Test(dataProvider = "main")
     public void testDownloadUserPhoto(UserParameters user) {
         LoginPage loginPage = new LoginPage();
         loginPage.tryToLogin(user.getUsername(), user.getPassword());
