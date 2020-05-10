@@ -41,10 +41,9 @@ public class MariaDB {
 
     public static void saveBlob(int id) {
         LOGGER.info("Save blob");
-        String selectSQL = "select photo from savedPhotos where id=?;";
+        String selectSQL = String.format("select photo from savedPhotos where id=%d;", id);
         try (PreparedStatement pstmt = DatabaseConnection.getInstance().prepareStatement(selectSQL);
              ResultSet rs = pstmt.executeQuery()) {
-            pstmt.setInt(1, id);
             while (rs.next()) {
                 InputStream input = rs.getBinaryStream("photo");
                 downloadPhoto(input, id);
