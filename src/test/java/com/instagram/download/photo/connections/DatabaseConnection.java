@@ -31,7 +31,8 @@ public class DatabaseConnection {
     public static void openConnection() {
         try {
             DatabaseConnection.getInstance();
-        } catch (SQLException ignored) {
+        } catch (SQLException e) {
+            LOGGER.error(e.getMessage());
         }
     }
 

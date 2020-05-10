@@ -2,7 +2,6 @@ package com.instagram.download.photo.selenide.tests;
 
 import com.epam.reportportal.testng.ReportPortalTestNGListener;
 import com.instagram.download.photo.databases.MariaDB;
-import com.instagram.download.photo.listeners.AnnotationTransformer;
 import com.instagram.download.photo.listeners.DatabaseListener;
 import com.instagram.download.photo.parameters.UserParameters;
 import com.instagram.download.photo.selenide.pages.LoginPage;
