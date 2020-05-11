@@ -14,7 +14,7 @@ public class DatabaseListener implements IExecutionListener {
 
     @Override
     public void onExecutionFinish() {
-        MariaDB.dropTable();
+        //MariaDB.dropTable(); //commented out for use blob-to-html maven plugin
         DatabaseConnection.closeConnection();
     }
 }
