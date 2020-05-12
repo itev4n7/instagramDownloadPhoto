@@ -126,7 +126,7 @@
                 </configuration>
             </plugin>
 
-            <plugin>
+            <!--<plugin>
                 <groupId>com.example</groupId>
                 <artifactId>blobtohtml-maven-plugin</artifactId>
                 <version>1.0-SNAPSHOT</version>
@@ -142,7 +142,7 @@
                     <username>root</username>
                     <password>mypass</password>
                 </configuration>
-            </plugin>
+            </plugin>-->
         </plugins>
     </build>
 </project>
