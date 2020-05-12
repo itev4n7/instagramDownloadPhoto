@@ -11,8 +11,10 @@ public class NewsPage {
 
     public void tryToSearchUser(String link) {
         LOGGER.info("try to search user");
-        LOGGER.debug("click Not Now");
-        $(byText("Not Now")).click();
+        if ($(byText("Not Now")).isDisplayed()) {
+            LOGGER.debug("click Not Now");
+            $(byText("Not Now")).click();
+        }
         LOGGER.debug("enter user in search field");
         $(By.xpath("//*[@placeholder='Search']")).setValue(link);
         LOGGER.debug("click on user");
