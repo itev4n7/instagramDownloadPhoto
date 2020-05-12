@@ -7,7 +7,7 @@
 
     <test name="instagramDownloadRetry">
         <classes>
-            <class name="com.instagram.download.photo.selenide.tests.DownloadUserPhoto"/>
+            <class name="com.instagram.download.photo.selenide.tests.TestDownloadUserPhoto"/>
         </classes>
     </test>
 </suite>

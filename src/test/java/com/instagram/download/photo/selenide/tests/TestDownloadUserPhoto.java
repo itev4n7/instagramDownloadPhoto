@@ -14,7 +14,7 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.assertEquals;
 
 @Listeners({ReportPortalTestNGListener.class, DatabaseListener.class})
-public class DownloadUserPhoto {
+public class TestDownloadUserPhoto {
 
     @DataProvider(name = "main")
     public static Object[][] main() {
