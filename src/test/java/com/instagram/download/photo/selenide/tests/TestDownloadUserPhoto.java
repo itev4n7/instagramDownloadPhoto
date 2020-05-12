@@ -18,7 +18,7 @@ public class TestDownloadUserPhoto {
 
     @DataProvider(name = "main")
     public static Object[][] main() {
-        return new Object[][]{{new UserParameters("", "", "vkvisionary")}}; //yan_lapotkov
+        return new Object[][]{{new UserParameters("test_download_123", "TESTdownload123321", "vkvisionary")}}; //yan_lapotkov
     }
 
     @Test(dataProvider = "main")
