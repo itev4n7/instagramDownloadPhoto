@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    node('node'){
     stages {
         stage('Compile Stage'){
             steps{
@@ -15,5 +15,6 @@ pipeline {
                 }
             }
         }
+    }
     }
 }
