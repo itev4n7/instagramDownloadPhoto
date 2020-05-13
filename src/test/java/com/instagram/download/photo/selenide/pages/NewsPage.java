@@ -3,6 +3,7 @@ package com.instagram.download.photo.selenide.pages;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 
@@ -11,10 +12,8 @@ public class NewsPage {
 
     public void tryToSearchUser(String link) {
         LOGGER.info("try to search user");
-        if ($(byText("Not Now")).isDisplayed()) {
-            LOGGER.debug("click Not Now");
-            $(byText("Not Now")).click();
-        }
+        LOGGER.debug("click Not Now");
+        $(byText("Not Now")).shouldBe(visible).click();
         LOGGER.debug("enter user in search field");
         $(By.xpath("//*[@placeholder='Search']")).setValue(link);
         LOGGER.debug("click on user");
