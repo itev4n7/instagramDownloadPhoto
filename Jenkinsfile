@@ -1,4 +1,4 @@
-pipeline {
+
     node('node'){
     stages {
         stage('Compile Stage'){
@@ -17,4 +17,3 @@ pipeline {
         }
     }
     }
-}
