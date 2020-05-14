@@ -16,5 +16,6 @@ node('node'){
         }
     } catch (err) {
         echo "Caught: ${err}"
+        currentBuild.result = 'FAILURE'
     }
 }
