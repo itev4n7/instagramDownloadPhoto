@@ -1,12 +1,20 @@
 node('node'){
-    stage('Compile Stage'){
-        withMaven(maven :'maven 3.6.3') {
-            sh 'mvn clean compile'
+    try{
+        stage('Compile Stage'){
+            withMaven(maven :'maven 3.6.3') {
+                sh 'mvn clean compile'
+            }
         }
+    } catch (err) {
+        echo "Caught: ${err}"
     }
-    stage ('Testing Stage'){
-        withMaven(maven :'maven 3.6.3') {
-            sh 'mvn test'
+    try{
+        stage ('Testing Stage'){
+            withMaven(maven :'maven 3.6.3') {
+                sh 'mvn test'
+            }
         }
+    } catch (err) {
+        echo "Caught: ${err}"
     }
 }
