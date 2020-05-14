@@ -1,4 +1,7 @@
 node('node'){
+    stage('git'){
+        git 'https://github.com/itev4n7/instagramDownloadPhoto.git'
+    }
     try{
         stage('Compile Stage'){
             withMaven(maven :'maven 3.6.3') {
