@@ -12,7 +12,6 @@ node('node'){
             sh 'mvn test'
         }
     }
-    post {
         success {
             echo 'This will run only if successful'
         }
@@ -27,5 +26,4 @@ node('node'){
             subject: "ERROR CI: Project name -> ${env.JOB_NAME}",
             to: "${env.DEFAULT_RECIPIENTS}";
         }
-    }
 }
