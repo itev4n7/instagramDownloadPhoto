@@ -17,5 +17,5 @@ node('node'){
             charset: 'UTF-8',
             mimeType: 'text/html',
             subject: "ERROR CI: Project name -> ${env.JOB_NAME}",
-            to: "${env.DEFAULT_RECIPIENTS}";
+            to: 'loha.malyoitar@gmail.com';
 }
