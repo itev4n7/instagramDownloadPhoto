@@ -10,7 +10,7 @@ node('node'){
         }
         stage ('Testing Stage'){
             withMaven(maven :'maven 3.6.3') {
-                sh 'mvn test'
+                sh 'mvn test -Dsurefire.suiteXmlFiles=TestNG.xml '
             }
         }
         mail bcc: '',
