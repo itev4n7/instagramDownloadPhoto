@@ -15,7 +15,7 @@ public class DatabaseConnection {
     private DatabaseConnection() {
     }
 
-    public static Connection getInstance() throws SQLException {
+    public static synchronized Connection getInstance() throws SQLException {
         if (instance == null || instance.isClosed()) {
             try {
                 LOGGER.info("Create connection");
