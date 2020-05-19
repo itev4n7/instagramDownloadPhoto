@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="ListenerTest" verbose="5">
+<suite name="DownloadInstagramPhotoTest" parallel="methods" thread-count="5" verbose="5">
     <!--<listeners>
         <listener class-name="com.instagram.download.photo.listeners.AnnotationTransformer"/>
     </listeners>-->
 
-    <test name="instagramDownloadRetry">
+    <test name="ParallelDownloadInstagramPhoto" group-by-instances="true">
         <classes>
-            <class name="com.instagram.download.photo.selenide.tests.TestDownloadUserPhoto"/>
+            <class name="com.instagram.download.photo.selenide.tests.TestParallelDownloadUserPhoto"/>
         </classes>
     </test>
 </suite>
