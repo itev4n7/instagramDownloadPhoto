@@ -19,7 +19,7 @@ public class UserPage {
     private int step = 250;
     private final int postItems = setPostsItems();
 
-    private synchronized int setPostsItems() {
+    private int setPostsItems() {
         LOGGER.debug("try set posts items");
         if ($(By.xpath("//li[contains(*, 'posts')]/span/span")).exists()) { //if you sign in
             return Integer.parseInt($(By.xpath("//li[contains(*, 'posts')]/span/span")).getText());
@@ -32,7 +32,7 @@ public class UserPage {
         return postItems;
     }
 
-    public synchronized void downloadUserPhotos() {
+    public void downloadUserPhotos() {
         LOGGER.info("try to download user photos");
         Map<WebElement, String> savedPhotos = new LinkedHashMap<>();
         LOGGER.debug("put photos");
@@ -47,14 +47,14 @@ public class UserPage {
         downloadSaved(savedPhotos);
     }
 
-    private synchronized void downloadSaved(Map<WebElement, String> savedPhotos) {
+    private void downloadSaved(Map<WebElement, String> savedPhotos) {
         savedPhotos.values()
                   .stream()
                   .map(this::transformURL)
                   .forEach(this::writePhotoToDB);
     }
 
-    private synchronized InputStream transformURL(String src) {
+    private InputStream transformURL(String src) {
         try {
             return new URL(src).openStream();
         } catch (IOException e) {
@@ -63,7 +63,7 @@ public class UserPage {
         }
     }
 
-    private synchronized void writePhotoToDB(InputStream inputStream) {
+    private void writePhotoToDB(InputStream inputStream) {
         if (inputStream != null) {
             MariaDB.writeBlob(count++, inputStream);
         }

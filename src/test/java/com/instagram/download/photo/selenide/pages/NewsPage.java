@@ -10,7 +10,7 @@ import static com.codeborne.selenide.Selenide.$;
 public class NewsPage {
     private static final Logger LOGGER = Logger.getLogger(NewsPage.class);
 
-    public synchronized void tryToSearchUser(String link) {
+    public void tryToSearchUser(String link) {
         LOGGER.info("try to search user");
         LOGGER.debug("click Not Now");
         $(byText("Not Now")).shouldBe(exist).click();
