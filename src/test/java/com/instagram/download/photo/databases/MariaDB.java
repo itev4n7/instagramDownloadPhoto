@@ -1,6 +1,6 @@
 package com.instagram.download.photo.databases;
 
-import com.instagram.download.photo.connections.DatabaseConnection;
+import com.instagram.download.photo.connections.DataPoolingConnection;
 import org.apache.commons.io.IOUtils;
 import org.apache.log4j.Logger;
 
@@ -19,11 +19,11 @@ public class MariaDB {
     private MariaDB() {
     }
 
-    public static synchronized void writeBlob(int id, InputStream inputStream) {
+    public static void writeBlob(int id, InputStream inputStream) {
         LOGGER.info("Try write blob to database");
         long threadId = Thread.currentThread().getId();
         String insertSQL = "insert into savedPhotos" + threadId + " VALUES(?,?);";
-        try (PreparedStatement pstmt = DatabaseConnection.getInstance().prepareStatement(insertSQL)) {
+        try (PreparedStatement pstmt = DataPoolingConnection.getInstance().prepareStatement(insertSQL)) {
             pstmt.setInt(1, id);
             pstmt.setBinaryStream(2, inputStream);
             if (pstmt.executeUpdate() == 0) {
@@ -40,11 +40,11 @@ public class MariaDB {
         }
     }
 
-    public static synchronized void saveBlob(int id) {
+    public static void saveBlob(int id) {
         LOGGER.info("Save blob");
         long threadId = Thread.currentThread().getId();
         String selectSQL = String.format("select photo from savedPhotos%d where id = % d;", threadId, id);
-        try (PreparedStatement pstmt = DatabaseConnection.getInstance().prepareStatement(selectSQL);
+        try (PreparedStatement pstmt = DataPoolingConnection.getInstance().prepareStatement(selectSQL);
              ResultSet rs = pstmt.executeQuery()) {
             while (rs.next()) {
                 InputStream input = rs.getBinaryStream("photo");
@@ -67,11 +67,11 @@ public class MariaDB {
         }
     }
 
-    public static synchronized int getRows() {
+    public static int getRows() {
         LOGGER.info("Get rows from database");
         long threadId = Thread.currentThread().getId();
         int rows = 0;
-        try (Statement stmt = DatabaseConnection.getInstance().createStatement()) {
+        try (Statement stmt = DataPoolingConnection.getInstance().createStatement()) {
             ResultSet resultSet = stmt.executeQuery("select count(*) from savedPhotos" + threadId + ";");
             resultSet.next();
             rows = resultSet.getInt(1);
@@ -81,10 +81,10 @@ public class MariaDB {
         return rows;
     }
 
-    public static synchronized void initTable() {
+    public static void initTable() {
         LOGGER.info("Create new table");
         long threadId = Thread.currentThread().getId();
-        try (Statement stmt = DatabaseConnection.getInstance().createStatement()) {
+        try (Statement stmt = DataPoolingConnection.getInstance().createStatement()) {
             stmt.execute("create table savedPhotos" + threadId + "(" +
                       "id INT NOT NULL," +
                       " photo LONGBLOB NOT NULL," +
@@ -94,10 +94,10 @@ public class MariaDB {
         }
     }
 
-    public static synchronized void dropTable() {
+    public static void dropTable() {
         LOGGER.info("Drop table");
         long threadId = Thread.currentThread().getId();
-        try (Statement stmt = DatabaseConnection.getInstance().createStatement()) {
+        try (Statement stmt = DataPoolingConnection.getInstance().createStatement()) {
             stmt.execute("drop table savedPhotos" + threadId + ";");
         } catch (SQLException e) {
             LOGGER.error(e.getMessage());
