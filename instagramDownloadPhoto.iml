@@ -89,5 +89,7 @@
     <orderEntry type="library" name="Maven: org.mariadb.jdbc:mariadb-java-client:2.6.0" level="project" />
     <orderEntry type="library" name="Maven: org.aeonbits.owner:owner:1.0.11" level="project" />
     <orderEntry type="library" name="Maven: com.j2html:j2html:1.4.0" level="project" />
+    <orderEntry type="library" name="Maven: com.mchange:c3p0:0.9.5.5" level="project" />
+    <orderEntry type="library" name="Maven: com.mchange:mchange-commons-java:0.2.19" level="project" />
   </component>
 </module>
