@@ -20,6 +20,7 @@
         <owner.version>1.0.11</owner.version>
         <j2html.version>1.4.0</j2html.version>
         <c3p0.version>0.9.5.5</c3p0.version>
+        <selenium-server.version>3.141.59</selenium-server.version>
     </properties>
 
     <repositories>
@@ -101,6 +102,13 @@
             <artifactId>c3p0</artifactId>
             <version>${c3p0.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-server</artifactId>
+            <version>${selenium-server.version}</version>
+        </dependency>
+
 
     </dependencies>
 
