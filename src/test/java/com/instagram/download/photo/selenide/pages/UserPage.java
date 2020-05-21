@@ -1,6 +1,5 @@
 package com.instagram.download.photo.selenide.pages;
 
-import com.codeborne.selenide.Condition;
 import com.instagram.download.photo.databases.MariaDB;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
@@ -22,9 +21,11 @@ public class UserPage {
 
     private int setPostsItems() {
         LOGGER.debug("try set posts items");
-        return $(By.xpath("//li[contains(*, 'posts')]/span/span")).should(Condition.visible) != null ?
-                  Integer.parseInt($(By.xpath("//li[contains(*, 'posts')]/span/span")).getText()) :
-                  Integer.parseInt($(By.xpath("//li[contains(*, 'posts')]//span")).getText());
+        if (LoginPage.isSingIn()) {
+            return Integer.parseInt($(By.xpath("//li[contains(*, 'posts')]/span/span")).getText());
+        } else {
+            return Integer.parseInt($(By.xpath("//li[contains(*, 'posts')]//span")).getText());
+        }
     }
 
     public int getPostItems() {
