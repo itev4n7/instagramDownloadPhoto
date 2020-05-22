@@ -26,12 +26,12 @@ public class DataPoolingConnection {
                 cpds.setJdbcUrl(config.url());
                 cpds.setUser(config.username());
                 cpds.setPassword(config.password());
-                cpds.setMinPoolSize(5);
-                cpds.setAcquireIncrement(5);
-                cpds.setMaxPoolSize(20);
+                cpds.setMinPoolSize(3);
+                cpds.setAcquireIncrement(3);
+                cpds.setMaxPoolSize(3);
                 instance = cpds.getConnection();
             } catch (SQLException e) {
-                LOGGER.error("Pooling connection didn`t create");
+                LOGGER.error("Pooling connection hasn't created");
             } catch (PropertyVetoException e) {
                 LOGGER.error(e.getMessage());
             }
@@ -53,7 +53,7 @@ public class DataPoolingConnection {
                 LOGGER.debug("Pooling connection close");
                 instance.close();
             } catch (SQLException e) {
-                LOGGER.error("Pooling connection didn`t close");
+                LOGGER.error("Pooling connection hasn't created");
             }
         }
     }
