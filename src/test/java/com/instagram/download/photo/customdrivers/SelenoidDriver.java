@@ -21,7 +21,6 @@ public class SelenoidDriver {
         capabilities.setBrowserName("chrome");
         capabilities.setVersion("81.0");
         capabilities.setCapability(ChromeOptions.CAPABILITY, options);
-        capabilities.setCapability("screenResolution", "1920x1080");
         capabilities.setCapability("enableVNC", true);
         capabilities.setCapability("enableVideo", false);
         try {
@@ -29,7 +28,7 @@ public class SelenoidDriver {
                       URI.create("http://localhost:8090/wd/hub").toURL(),
                       capabilities
             );
-            LOGGER.info("set remote driver in selenoid");
+            LOGGER.info("Set remote driver in selenoid");
             WebDriverRunner.setWebDriver(driver);
         } catch (MalformedURLException e) {
             throw new RuntimeException(e.getMessage());
