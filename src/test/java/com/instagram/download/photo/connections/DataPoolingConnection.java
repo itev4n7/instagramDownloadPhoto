@@ -22,13 +22,13 @@ public class DataPoolingConnection {
             try {
                 LOGGER.info("Create pooling connection");
                 DatabaseConfig config = ConfigFactory.create(DatabaseConfig.class);
-                cpds.setDriverClass("com.mysql.jdbc.Driver");
+                cpds.setDriverClass("org.mariadb.jdbc.Driver");
                 cpds.setJdbcUrl(config.url());
                 cpds.setUser(config.username());
                 cpds.setPassword(config.password());
-                cpds.setMinPoolSize(3);
-                cpds.setAcquireIncrement(3);
-                cpds.setMaxPoolSize(3);
+                cpds.setMinPoolSize(5);
+                cpds.setAcquireIncrement(5);
+                cpds.setMaxPoolSize(20);
                 instance = cpds.getConnection();
             } catch (SQLException e) {
                 LOGGER.error("Pooling connection hasn't created");
@@ -50,7 +50,7 @@ public class DataPoolingConnection {
     public static void closeConnection() {
         if (instance == null) {
             try {
-                LOGGER.debug("Pooling connection close");
+                LOGGER.debug("Close pooling connection");
                 instance.close();
             } catch (SQLException e) {
                 LOGGER.error("Pooling connection hasn't created");

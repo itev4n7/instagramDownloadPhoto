@@ -3,7 +3,7 @@ package com.instagram.download.photo.selenide.tests;
 import com.epam.reportportal.testng.ReportPortalTestNGListener;
 import com.instagram.download.photo.databases.MariaDB;
 import com.instagram.download.photo.dataprovider.DataProviderClass;
-import com.instagram.download.photo.listeners.DatabaseListener;
+import com.instagram.download.photo.listeners.DriverSetUpListener;
 import com.instagram.download.photo.parameters.UserParameters;
 import com.instagram.download.photo.selenide.pages.LoginPage;
 import com.instagram.download.photo.selenide.pages.NewsPage;
@@ -13,10 +13,10 @@ import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
 
-@Listeners({ReportPortalTestNGListener.class, DatabaseListener.class})
+@Listeners({ReportPortalTestNGListener.class, DriverSetUpListener.class})
 public class TestDownloadUserPhoto {
 
-    @Test(dataProvider = "testLink1", dataProviderClass = DataProviderClass.class, enabled = false)
+    @Test(dataProvider = "testLink1", dataProviderClass = DataProviderClass.class, enabled = true)
     public void testDownloadUserPhoto(UserParameters user) {
         LoginPage loginPage = new LoginPage();
         loginPage.tryToLogin(user.getUsername(), user.getPassword());

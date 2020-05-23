@@ -3,6 +3,7 @@ package com.instagram.download.photo.customdrivers;
 import com.codeborne.selenide.WebDriverRunner;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
@@ -14,10 +15,13 @@ public class SelenoidDriver {
 
     public static void setUp() {
         LOGGER.info("Set up selenoid");
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--start-maximized");
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setBrowserName("chrome");
         capabilities.setVersion("81.0");
-        capabilities.setCapability("screenResolution", "1920x1080x24");
+        capabilities.setCapability(ChromeOptions.CAPABILITY, options);
+        capabilities.setCapability("screenResolution", "1920x1080");
         capabilities.setCapability("enableVNC", true);
         capabilities.setCapability("enableVideo", false);
         try {
