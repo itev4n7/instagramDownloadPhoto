@@ -29,7 +29,7 @@ public class SelenoidDriver {
                       URI.create("http://localhost:8090/wd/hub").toURL(),
                       capabilities
             );
-            LOGGER.info("set remote driver in selenide");
+            LOGGER.info("set remote driver in selenoid");
             WebDriverRunner.setWebDriver(driver);
         } catch (MalformedURLException e) {
             throw new RuntimeException(e.getMessage());
