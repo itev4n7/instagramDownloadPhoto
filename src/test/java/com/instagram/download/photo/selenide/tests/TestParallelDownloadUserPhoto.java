@@ -22,7 +22,7 @@ import static org.testng.Assert.assertEquals;
           SelenoidListener.class})
 public class TestParallelDownloadUserPhoto {
 
-    @TableName("TestLink1")
+    @TableName("testLink1")
     @Test(dataProvider = "testLink1", dataProviderClass = DataProviderClass.class)
     public void testDownloadUserPhoto1(UserParameters user) {
         open("https://www.instagram.com/" + user.getLink());
@@ -33,7 +33,7 @@ public class TestParallelDownloadUserPhoto {
         assertEquals(userPage.getPostItems(), MariaDB.getRows());
     }
 
-    @TableName("TestLink2")
+    @TableName("testLink2")
     @Test(dataProvider = "testLink2", dataProviderClass = DataProviderClass.class)
     public void testDownloadUserPhoto2(UserParameters user) {
         open("https://www.instagram.com/" + user.getLink());
@@ -44,7 +44,7 @@ public class TestParallelDownloadUserPhoto {
         assertEquals(userPage.getPostItems(), MariaDB.getRows());
     }
 
-    @TableName("TestLink3")
+    @TableName("testLink3")
     @Test(dataProvider = "testLink3", dataProviderClass = DataProviderClass.class)
     public void testDownloadUserPhoto3(UserParameters user) {
         open("https://www.instagram.com/" + user.getLink());
@@ -55,7 +55,7 @@ public class TestParallelDownloadUserPhoto {
         assertEquals(userPage.getPostItems(), MariaDB.getRows());
     }
 
-    @TableName("TestLink4")
+    @TableName("testLink4")
     @Test(dataProvider = "testLink4", dataProviderClass = DataProviderClass.class)
     public void testDownloadUserPhoto4(UserParameters user) {
         open("https://www.instagram.com/" + user.getLink());
@@ -66,7 +66,7 @@ public class TestParallelDownloadUserPhoto {
         assertEquals(userPage.getPostItems(), MariaDB.getRows());
     }
 
-    @TableName("TestLink5")
+    @TableName("testLink5")
     @Test(dataProvider = "testLink5", dataProviderClass = DataProviderClass.class)
     public void testDownloadUserPhoto5(UserParameters user) {
         open("https://www.instagram.com/" + user.getLink());

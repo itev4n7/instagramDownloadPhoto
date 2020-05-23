@@ -22,7 +22,7 @@ public class MariaDB {
 
     public static void writeBlob(int id, InputStream inputStream) {
         LOGGER.info("Try write blob to database");
-        String insertSQL = "insert into savedPhotos" + SelenoidListener.tableName.get() + " VALUES(?,?);";
+        String insertSQL = "insert into " + SelenoidListener.tableName.get() + " VALUES(?,?);";
         try (PreparedStatement pstmt = DataPoolingConnection.getInstance().prepareStatement(insertSQL)) {
             pstmt.setInt(1, id);
             pstmt.setBinaryStream(2, inputStream);
@@ -42,7 +42,7 @@ public class MariaDB {
 
     public static void saveBlob(int id) {
         LOGGER.info("Save blob");
-        String selectSQL = String.format("select photo from savedPhotos%s where id = %d;", SelenoidListener.tableName.get(), id);
+        String selectSQL = String.format("select photo from %s where id = %d;", SelenoidListener.tableName.get(), id);
         try (PreparedStatement pstmt = DataPoolingConnection.getInstance().prepareStatement(selectSQL);
              ResultSet rs = pstmt.executeQuery()) {
             while (rs.next()) {
@@ -70,7 +70,7 @@ public class MariaDB {
         LOGGER.info("Get rows from database");
         int rows = 0;
         try (Statement stmt = DataPoolingConnection.getInstance().createStatement()) {
-            ResultSet resultSet = stmt.executeQuery("select count(*) from savedPhotos" + SelenoidListener.tableName.get() + ";");
+            ResultSet resultSet = stmt.executeQuery("select count(*) from " + SelenoidListener.tableName.get() + ";");
             resultSet.next();
             rows = resultSet.getInt(1);
         } catch (SQLException e) {
@@ -82,7 +82,7 @@ public class MariaDB {
     public static void initTable(String tableName) {
         LOGGER.info("Create new table " + tableName);
         try (Statement stmt = DataPoolingConnection.getInstance().createStatement()) {
-            stmt.execute("create table savedPhotos" + tableName + "(" +
+            stmt.execute("create table " + tableName + "(" +
                       "id INT NOT NULL," +
                       " photo LONGBLOB NOT NULL," +
                       " PRIMARY KEY ( id ));");
@@ -94,7 +94,7 @@ public class MariaDB {
     public static void dropTable(String tableName) {
         LOGGER.info("Drop table " + tableName);
         try (Statement stmt = DataPoolingConnection.getInstance().createStatement()) {
-            stmt.execute("drop table savedPhotos" + tableName + ";");
+            stmt.execute("drop table " + tableName + ";");
         } catch (SQLException e) {
             LOGGER.error(e.getMessage());
         }
