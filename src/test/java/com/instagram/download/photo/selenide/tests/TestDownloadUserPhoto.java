@@ -16,7 +16,7 @@ import static org.testng.Assert.assertEquals;
 @Listeners({ReportPortalTestNGListener.class, DriverSetUpListener.class})
 public class TestDownloadUserPhoto {
 
-    @Test(dataProvider = "testLink1", dataProviderClass = DataProviderClass.class, enabled = true)
+    @Test(dataProvider = "testLink1", dataProviderClass = DataProviderClass.class, enabled = false)
     public void testDownloadUserPhoto(UserParameters user) {
         LoginPage loginPage = new LoginPage();
         loginPage.tryToLogin(user.getUsername(), user.getPassword());
