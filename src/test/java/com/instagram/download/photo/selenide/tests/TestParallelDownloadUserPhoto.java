@@ -6,7 +6,7 @@ import com.instagram.download.photo.databases.MariaDB;
 import com.instagram.download.photo.dataprovider.DataProviderClass;
 import com.instagram.download.photo.listeners.DataConnectionListener;
 import com.instagram.download.photo.listeners.DriverSetUpListener;
-import com.instagram.download.photo.listeners.SelenoidListener;
+import com.instagram.download.photo.listeners.ConcurrentNameListener;
 import com.instagram.download.photo.parameters.UserParameters;
 import com.instagram.download.photo.selenide.pages.UserPage;
 import org.testng.annotations.Listeners;
@@ -19,7 +19,7 @@ import static org.testng.Assert.assertEquals;
           ReportPortalTestNGListener.class,
           DriverSetUpListener.class,
           DataConnectionListener.class,
-          SelenoidListener.class})
+          ConcurrentNameListener.class})
 public class TestParallelDownloadUserPhoto {
 
     @TableName("testLink1")
