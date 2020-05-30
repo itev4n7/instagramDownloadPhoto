@@ -1,6 +1,6 @@
 package com.instagram.download.photo.connections;
 
-import com.instagram.download.photo.configs.DatabaseConfig;
+import com.instagram.download.photo.configs.DataBaseConfig;
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 import org.aeonbits.owner.ConfigFactory;
 import org.apache.log4j.Logger;
@@ -21,7 +21,7 @@ public class DataPoolingConnection {
         if (instance == null || instance.isClosed()) {
             try {
                 LOGGER.info("Create pooling connection");
-                DatabaseConfig config = ConfigFactory.create(DatabaseConfig.class);
+                DataBaseConfig config = ConfigFactory.create(DataBaseConfig.class);
                 cpds.setDriverClass("org.mariadb.jdbc.Driver");
                 cpds.setJdbcUrl(config.url());
                 cpds.setUser(config.username());

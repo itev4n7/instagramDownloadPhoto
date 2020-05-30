@@ -1,7 +1,7 @@
 package com.instagram.download.photo.databases;
 
 import com.instagram.download.photo.connections.DataPoolingConnection;
-import com.instagram.download.photo.listeners.ConcurrentDataBaseListener;
+import com.instagram.download.photo.listeners.ConcurrentNameListener;
 import org.apache.commons.io.IOUtils;
 import org.apache.log4j.Logger;
 
@@ -22,7 +22,7 @@ public class MariaDB {
 
     public static void writeBlob(int id, InputStream inputStream) {
         LOGGER.info("Try write blob to database");
-        String insertSQL = "insert into " + ConcurrentDataBaseListener.tableName.get() + " VALUES(?,?);";
+        String insertSQL = "insert into " + ConcurrentNameListener.tableName.get() + " VALUES(?,?);";
         try (PreparedStatement pstmt = DataPoolingConnection.getInstance().prepareStatement(insertSQL)) {
             pstmt.setInt(1, id);
             pstmt.setBinaryStream(2, inputStream);
@@ -42,7 +42,7 @@ public class MariaDB {
 
     public static void saveBlob(int id) {
         LOGGER.info("Save blob");
-        String selectSQL = String.format("select photo from %s where id = %d;", ConcurrentDataBaseListener.tableName.get(), id);
+        String selectSQL = String.format("select photo from %s where id = %d;", ConcurrentNameListener.tableName.get(), id);
         try (PreparedStatement pstmt = DataPoolingConnection.getInstance().prepareStatement(selectSQL);
              ResultSet rs = pstmt.executeQuery()) {
             while (rs.next()) {
@@ -70,7 +70,7 @@ public class MariaDB {
         LOGGER.info("Get rows from database");
         int rows = 0;
         try (Statement stmt = DataPoolingConnection.getInstance().createStatement()) {
-            ResultSet resultSet = stmt.executeQuery("select count(*) from " + ConcurrentDataBaseListener.tableName.get() + ";");
+            ResultSet resultSet = stmt.executeQuery("select count(*) from " + ConcurrentNameListener.tableName.get() + ";");
             resultSet.next();
             rows = resultSet.getInt(1);
         } catch (SQLException e) {

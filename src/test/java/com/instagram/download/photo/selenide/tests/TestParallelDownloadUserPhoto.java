@@ -4,9 +4,9 @@ import com.epam.reportportal.testng.ReportPortalTestNGListener;
 import com.instagram.download.photo.annotations.TableName;
 import com.instagram.download.photo.databases.MariaDB;
 import com.instagram.download.photo.dataprovider.DataProviderClass;
-import com.instagram.download.photo.listeners.DataConnectionListener;
-import com.instagram.download.photo.listeners.DriverSetUpListener;
 import com.instagram.download.photo.listeners.ConcurrentNameListener;
+import com.instagram.download.photo.listeners.DataConnectionListener;
+import com.instagram.download.photo.listeners.SelenoidSetUpListener;
 import com.instagram.download.photo.parameters.UserParameters;
 import com.instagram.download.photo.selenide.pages.UserPage;
 import org.testng.annotations.Listeners;
@@ -17,7 +17,7 @@ import static org.testng.Assert.assertEquals;
 
 @Listeners({
           ReportPortalTestNGListener.class,
-          DriverSetUpListener.class,
+          SelenoidSetUpListener.class,
           DataConnectionListener.class,
           ConcurrentNameListener.class})
 public class TestParallelDownloadUserPhoto {
