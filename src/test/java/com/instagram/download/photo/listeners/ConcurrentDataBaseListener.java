@@ -8,7 +8,7 @@ import org.testng.ITestResult;
 
 import java.lang.reflect.Method;
 
-public class ConcurrentNameListener implements IInvokedMethodListener {
+public class ConcurrentDataBaseListener implements IInvokedMethodListener {
     public static ThreadLocal<String> tableName = new ThreadLocal<>();
 
     @Override
