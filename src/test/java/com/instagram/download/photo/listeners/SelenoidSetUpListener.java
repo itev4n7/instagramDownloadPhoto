@@ -10,8 +10,4 @@ public class SelenoidSetUpListener implements IExecutionListener {
         SelenoidDriver.setUp();
     }
 
-    @Override
-    public void onExecutionFinish() {
-        SelenoidDriver.tearDown();
-    }
 }
