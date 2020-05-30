@@ -5,7 +5,7 @@ import org.aeonbits.owner.Config;
 import static org.aeonbits.owner.Config.Sources;
 
 @Sources("file:src/test/resources/DatabaseConfig.properties")
-public interface DatabaseConfig extends Config {
+public interface DataBaseConfig extends Config {
     @Key("database.url")
     String url();
 
