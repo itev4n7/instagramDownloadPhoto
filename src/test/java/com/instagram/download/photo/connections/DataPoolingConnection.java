@@ -29,6 +29,7 @@ public class DataPoolingConnection {
                 cpds.setMinPoolSize(5);
                 cpds.setAcquireIncrement(5);
                 cpds.setMaxPoolSize(20);
+                cpds.setInitialPoolSize(5);
                 instance = cpds.getConnection();
             } catch (SQLException e) {
                 LOGGER.error("Pooling connection hasn't created");
