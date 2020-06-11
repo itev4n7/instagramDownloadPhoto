@@ -54,7 +54,7 @@ public class DataPoolingConnection {
                 LOGGER.debug("Close pooling connection");
                 instance.close();
             } catch (SQLException e) {
-                LOGGER.error("Pooling connection hasn't created");
+                LOGGER.error("Pooling connection hasn't close");
             }
         }
     }
