@@ -17,6 +17,7 @@ In the project i work with:
 - database and sql
 - listeners
 - jenkins & mariadb & selenoid & reportportal is spin up in docker
+- [jenkinsfile](https://github.com/itev4n7/instagramDownloadPhoto/blob/master/Jenkinsfile)
 - parallel test methods([testNG features](https://github.com/itev4n7/instagramDownloadPhoto/blob/master/TestNG.xml#L3))
 - parallel connection to database(c3p0)
 
