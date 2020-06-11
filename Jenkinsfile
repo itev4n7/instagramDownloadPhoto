@@ -1,4 +1,4 @@
-node('node'){
+node('jenNode'){
     try{
         stage('git'){
             git 'https://github.com/itev4n7/instagramDownloadPhoto.git'
