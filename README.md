@@ -4,6 +4,7 @@ In the project i used libraries such as:
 - selenium/selenide
 - webdrivermanager
 - log4j
+- reportportal
 - mariadb
 - owner
 - j2html
@@ -11,9 +12,12 @@ In the project i used libraries such as:
 
 # Used patterns in the project: page object & page factory, builder, singleton
 In the project i work with:
+- webdriver(selenuim/selenide/selenoid)
+- building xpath locators
 - database and sql
-- jenkins & mariadb & selenoid & reportportal spin up in docker
-- parallel test methods(testng features)
+- jenkins & mariadb & selenoid & reportportal is spin up in docker
+- parallel test methods(testNG features)
+- parallel connection to database 
 
 # Made a maven plugin(https://github.com/itev4n7/blobtohtml-maven-plugin)
 This plugin make html-report with photo inside the database (creating html-report using j2html)
