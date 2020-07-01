@@ -1,15 +1,12 @@
 package com.instagram.download.photo.selenium.pages;
 
-import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
-import org.openqa.selenium.support.PageFactory;
 
 public class NewsPageSelenium extends BasePageSelenium {
-    private static final Logger LOGGER = Logger.getLogger(NewsPageSelenium.class);
 
     @FindBy(how = How.XPATH, using = "//*[@placeholder='Search']")
     private WebElement searchField;
@@ -19,7 +16,6 @@ public class NewsPageSelenium extends BasePageSelenium {
 
     public NewsPageSelenium(WebDriver driver) {
         super(driver);
-        PageFactory.initElements(driver, this);
     }
 
     public void tryToSearchUser(String link) {

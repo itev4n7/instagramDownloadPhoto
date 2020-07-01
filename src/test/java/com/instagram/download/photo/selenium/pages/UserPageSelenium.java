@@ -1,14 +1,12 @@
 package com.instagram.download.photo.selenium.pages;
 
 import org.apache.commons.io.IOUtils;
-import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
-import org.openqa.selenium.support.PageFactory;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -19,7 +17,6 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class UserPageSelenium extends BasePageSelenium {
-    private static final Logger LOGGER = Logger.getLogger(UserPageSelenium.class);
     private static int count = 1;
     private int step = 250;
     private int postsItems;
@@ -30,7 +27,6 @@ public class UserPageSelenium extends BasePageSelenium {
 
     public UserPageSelenium(WebDriver driver) {
         super(driver);
-        PageFactory.initElements(driver, this);
     }
 
     private int setPostsItems() {
@@ -64,9 +60,9 @@ public class UserPageSelenium extends BasePageSelenium {
 
     private void downloadSaved(Map<WebElement, String> savedPhotos) {
         savedPhotos.values()
-                  .stream()
-                  .map(this::transformURL)
-                  .forEach(this::downloadPhoto);
+                .stream()
+                .map(this::transformURL)
+                .forEach(this::downloadPhoto);
     }
 
     private InputStream transformURL(String src) {
@@ -81,7 +77,7 @@ public class UserPageSelenium extends BasePageSelenium {
     private void downloadPhoto(InputStream inputStream) {
         if (inputStream != null) {
             try (OutputStream fileOutputStream = new FileOutputStream(ClassLoader.getSystemResource(".").getPath()
-                      + String.format("/photo%d.png", count++))) {
+                    + String.format("/photo%d.png", count++))) {
                 IOUtils.copy(inputStream, fileOutputStream);
                 inputStream.close();
                 savedPostsCount++;
